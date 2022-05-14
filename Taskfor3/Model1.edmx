@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище TableExRateModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "TableExRate.dbo.TableExRate" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="TableExRate">
+          <Key>
+            <PropertyRef Name="title" />
+            <PropertyRef Name="pubDate" />
+            <PropertyRef Name="description" />
+            <PropertyRef Name="quant" />
+          </Key>
+          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="pubDate" Type="datetime" Nullable="false" />
+          <Property Name="description" Type="float" Nullable="false" />
+          <Property Name="quant" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Хранилище TableExRateModelContainer">
+          <EntitySet Name="TableExRate" EntityType="Self.TableExRate" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TableExRate].[title] AS [title], 
+    [TableExRate].[pubDate] AS [pubDate], 
+    [TableExRate].[description] AS [description], 
+    [TableExRate].[quant] AS [quant]
+    FROM [dbo].[TableExRate] AS [TableExRate]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TableExRateModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TableExRate">
+          <Key>
+            <PropertyRef Name="title" />
+            <PropertyRef Name="pubDate" />
+            <PropertyRef Name="description" />
+            <PropertyRef Name="quant" />
+          </Key>
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pubDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="description" Type="Double" Nullable="false" />
+          <Property Name="quant" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TableExRateEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TableExRate" EntityType="Self.TableExRate" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TableExRateModelContainer" CdmEntityContainer="TableExRateEntities">
+          <EntitySetMapping Name="TableExRate">
+            <EntityTypeMapping TypeName="TableExRateModel.TableExRate">
+              <MappingFragment StoreEntitySet="TableExRate">
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="pubDate" ColumnName="pubDate" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="quant" ColumnName="quant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
